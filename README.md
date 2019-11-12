@@ -1,5 +1,5 @@
 # Annotation Tool
-command line tool for annotating tokens
+command line tool for annotating tokens for Python 3
 
 # Prerequisites
 You need to provide a .txt-file containing the text you want to annotate.
@@ -8,10 +8,10 @@ The script uses nltk for sentence and word tokenization. Installation:
 ```bash
 $ pip3 install nltk
 ```
- The nltk sentence tokenizer highly depends on punctuation, so make sure your text file has complete sentences. If this is not the case, nltk might interpret one sentence as multiple which affects the annotation.
+ The nltk sentence tokenizer highly depends on punctuation, so make sure your text file contains complete sentences. If this is not the case, nltk might interpret one sentence as multiple which affects the annotation. The tool would print you multiple sentences as one long sentence, and you couldn't pause the annotation until that "one sentence" is done.
 
 # Description
-The annotation tool works via the Linux command line. It prints each sentence of your text file and lets you annotate word by word. To do so, it shows you word after word and takes your input as label.
+The annotation tool works via the command line. It prints each sentence of your text file and lets you annotate word by word. To do so, it shows you word after word and takes your input as label. You can exit the annotation between after any sentence and continue annotating at that position the next time.
 
 ## Pre-defined Labelset
 Before you start, you need to pre-define the labels you want to use for your annotations. You can do so in line 94:
@@ -39,7 +39,7 @@ optional arguments:
 ```
 
 ## Running the Tool
-Run teh tool via Linux command line. You can test it using the example text from 'The Little Prince' (don't forget to define your labels first):
+Run the tool via the Linux command line. You can test it using the example text from 'The Little Prince' (don't forget to define your labels first):
 ```bash
 $ python3 annotate.py example-text.txt
 ```

@@ -131,12 +131,18 @@ for s in sentences[index:]:
 		elif label in labels:
 			anno_sent.append((w, label))
 	if len(anno_sent) == len(words):
-		annotation.append(anno_sent)
+		for pair in anno_sent:
+			annotation.append(pair)
 	i_w = 0
 	if label == "exit":
 		break
 	elif label == "sentence":
 		print(s)
+	if len(sentences) == sentences.index(s)+1:
+		print("Annotation complete!")
+		save_annotation(annotation)
+
+
 
 
 #save new annotation to pickle file
@@ -150,3 +156,14 @@ with open("index.txt", "w") as f:
 print(annotation)
 print("Your annotation was saved to: %s ." %file_name)
 print("The index of your last annotated sentence was saved to: index.txt .")
+
+
+
+def save_annotation(anno):
+	"""saves completed annotation to txt file"""
+	f = file[:-4] + "-ANNO.txt"
+	with open(f, "w") as ft:
+		for l in anno:
+			for t in l:
+				ft.write(t[0] + "\t" + t[1] + "\n")
+	print("Your annotation was saved to: %s" %f)

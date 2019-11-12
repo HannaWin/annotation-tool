@@ -103,21 +103,40 @@ for s in sentences[index:]:
 		break
 	print(s)
 	words = word_tokenize(s)
+	anno_sent = []
 	for w in words:
 		print(w)
 		label = input()
-		if label == "exit":
-			#index of sentence which was annotated last
-			print("Please finish annotating the current sentence before exiting.")
-		else:
-			#only accepts pre-defined labels , or "exit"
-			while label not in labels:
-				print("Label not valid. Options: %s" %str(labels))
+		i_w = words.index(w)
+		while label not in labels:
+			if label == "sentence":
+				print(s)
+				print(w)
 				label = input()
-			annotation.append((w, label))
+			elif label == "annotation":
+				print(annotation)
+				print(w)
+				label = input()
+			elif label == "exit":
+				break
+			else:
+			#only accepts pre-defined labels , or "exit"
+				print("Label not valid. Options: %s" %str(labels))
+				print(w)
+				label = input()
+		if label == "exit":
+			print("Exiting annotation.")
+			index = i
+			break
+		elif label in labels:
+			anno_sent.append((w, label))
+	if len(anno_sent) == len(words):
+		annotation.append(anno_sent)
 	i_w = 0
 	if label == "exit":
 		break
+	elif label == "sentence":
+		print(s)
 
 
 #save new annotation to pickle file

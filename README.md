@@ -8,10 +8,12 @@ The script uses nltk for sentence and word tokenization. Installation:
 ```bash
 $ pip3 install nltk
 ```
- The nltk sentence tokenizer highly depends on punctuation, so make sure your text file contains complete sentences. If this is not the case, nltk might interpret one sentence as multiple which affects the annotation. The tool would print you multiple sentences as one long sentence, and you couldn't pause the annotation until that "one sentence" is done.
+ The nltk sentence tokenizer highly depends on punctuation, so make sure your text file contains complete sentences. If this is not the case, nltk might interpret one sentence as multiple which affects the annotation. The tool would print you multiple sentences as one long sentence, and exiting would reset the annotation of this "sentence".
 
 # Description
-The annotation tool works via the command line. It prints each sentence of your text file and lets you annotate word by word. To do so, it shows you word after word and takes your input as label. You can exit the annotation between after any sentence and continue annotating at that position the next time.
+The annotation tool works via the command line. It prints each sentence of your text file and lets you annotate word by word. To do so, it shows you word after word and takes your input as label. 
+
+If you exit the tool, your progress so far is saved and you can continue with the last unannotated sentence next time you run the script. You can exit the tool any time but exiting during the annotaion of a senetence will reset the annotation of this one sentence.
 
 ## Pre-defined Labelset
 Before you start, you need to pre-define the labels you want to use for your annotations. You can do so in line 94:
@@ -43,6 +45,12 @@ Run the tool via the Linux command line. You can test it using the example text 
 ```bash
 $ python3 annotate.py example-text.txt
 ```
+
+### Interactive Options
+There are a few commands you can issue while using the tool:
+* *exit*: exits tool; annotation is saved until last sentence that was completely annotated
+* *annotation*: prints the word-label pairs that were annotated so far
+* *sentence*: prints the sentence you are currently annotating
 
 # Author
 * Hanna Winter

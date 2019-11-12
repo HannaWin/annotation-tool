@@ -20,12 +20,25 @@ Before you start, you need to pre-define the labels you want to use for your ann
 ```python
 labels = ("",)
 ```
-
-### Commandline Interface
 To avoid labels which were not defined, the tool compares the user input with the set of labels. 
 
-The annotation is saved to a pickle file and can be continued at the last annotated sentence the next time you run the script. It checks if an annotation file for your text file exists and asks you, if you want to continue where you left off or start from scratch. The annotation can only be paused between sentences. 
 
+### Running the Tool
+Run the tool via the Linux command line. You can test it using the example text from 'The Little Prince' (don't forget to define your labels first):
+```bash
+$ python3 annotate.py example-text.txt
+```
+The annotation is saved to a pickle file and can be continued at the last annotated sentence the next time you run the script. It checks if an annotation file for your text file exists and asks you, if you want to continue where you left off or start from scratch. 
+
+
+#### Interactive Options
+There are a few commands you can issue while using the tool:
+* *exit*: exits tool; annotation is saved until last sentence that was completely annotated
+* *annotation*: prints the word-label pairs that were annotated so far
+* *sentence*: prints the sentence you are currently annotating
+
+
+#### Commandline Interface
 To start off at your last sentence, you can indicate its index as command line argument:
 
 ```bash
@@ -40,17 +53,8 @@ optional arguments:
                         Indicate index where you left off.
 ```
 
-### Running the Tool
-Run the tool via the Linux command line. You can test it using the example text from 'The Little Prince' (don't forget to define your labels first):
-```bash
-$ python3 annotate.py example-text.txt
-```
 
-#### Interactive Options
-There are a few commands you can issue while using the tool:
-* *exit*: exits tool; annotation is saved until last sentence that was completely annotated
-* *annotation*: prints the word-label pairs that were annotated so far
-* *sentence*: prints the sentence you are currently annotating
 
-# Author
+
+## Author
 * Hanna Winter

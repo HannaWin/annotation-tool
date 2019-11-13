@@ -16,7 +16,7 @@ If you want to save your completed annotation to an excel file for better readab
 ```bash
 $ pip3 install openpyxl
 ```
-Alternatively, change the function calling in lines 130 and 131 to save your results to a txt file. Either way, the annotation is saved to a pickle file.
+Alternatively, change the function calling in lines 189 and 190 to save your results to a txt file. Either way, the annotation is saved to a pickle file.
 
 ## Description
 The annotation tool works via the command line. It prints each sentence of your text file and lets you annotate word by word. To do so, it shows you word after word and takes your input as label. 
@@ -24,7 +24,7 @@ The annotation tool works via the command line. It prints each sentence of your 
 If you exit the tool, your progress so far is saved and you can continue with the last unannotated sentence next time you run the script. You can exit the tool any time but exiting during the annotaion of a senetence will reset the annotation of this one sentence.
 
 ### Pre-defined Labelset
-Before you start, you need to pre-define the labels you want to use for your annotations. You can do so in line 82:
+Before you start, you need to pre-define the labels you want to use for your annotations. You can do so in line 141:
 ```python
 labels = ("",)
 ```
@@ -46,7 +46,7 @@ There are a few commands you can issue while using the tool:
 * *sentence*: prints the sentence you are currently annotating
 
 #### Saving Your Progress
-Your annotation progress is automatically saved when exiting the tool. When you completely annotated the text in the given file, the results are saved to a conll file by default. You can change this format (see line 130) to a txt or excel file. 
+Your annotation progress is automatically saved when exiting the tool. When you completely annotated the text in the given file, the results are saved to a conll file by default. You can change this format (see line 189) to a txt or excel file. 
 
 #### Commandline Interface
 To start off at your last sentence, you can indicate its index as command line argument:

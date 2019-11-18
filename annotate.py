@@ -102,7 +102,6 @@ else:
 				#annotation = pickle.load(open(file_name, "rb"))
 				#load last index to continue annotation
 				#check if there is an index from the last annotation
-				print("check")
 				with open("index.txt", "r") as f:
 					index = int(f.read())
 				print("You left off at sentence %s. Continue here? [y/n]" %str(index))
@@ -139,7 +138,13 @@ else:
 sentences = sent_tokenize(text)
 #TODO: define your labels (to avoid empty labels delete "" from tuple)	
 labels = ("",)
-
+#TODO: enter your labels with a short description
+label_descr = {"label": 'this is what the label describes'}
+commands = {"sentence": "print current sentence",
+			"annotation": "print annotation",
+			"labels": "print possible labels with description",
+			"categories": "print possible labels with description",
+			"exit": "exit tool"}
 #iterate over sentences and their words and take input as label
 for s in sentences[index:]:
 	i = sentences.index(s)
@@ -165,9 +170,21 @@ for s in sentences[index:]:
 				label = input()
 			elif label == "exit":
 				break
+			elif label == "labels" or label == "categories":
+				for k,v in label_descr.items():
+					print(k + ": " + v)
+				print(w)
+				label = input()
+			elif label == "commands":
+				for k,v in commands.items():
+					print(k + ": " + v)
+				print(w)
+				label = input()
 			else:
 			#only accepts pre-defined labels , or "exit"
-				print("Label not valid. Options: %s" %str(labels))
+				print("Label not valid. Options: ")
+				for k,v in label_descr.items():
+					print(k + ": " + v)
 				print(w)
 				label = input()
 		if label == "exit":
